@@ -4,7 +4,7 @@ terraform {
     bucket         = "prophet-terraform-state-production"
     dynamodb_table = "terraform-state-lock-dynamo"
     key            = ".terraform/terraform.tfstate"
-    region         = "eu-central-1"
+    region         = "eu-east-1"
     
   }
   required_providers {
