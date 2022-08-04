@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
     encrypt        = false
-    bucket         = "scae-terraform-state"
-    dynamodb_table = "terraform-state-lock"
+    bucket         = "prophet-terraform-state-production"
+    dynamodb_table = "terraform-state-lock-dynamo"
     key            = ".terraform/terraform.tfstate"
     region         = "eu-central-1"
     
@@ -18,10 +18,5 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region
-}
-
-provider "aws" {
-  alias = "us-east-1"
   region = "us-east-1"
 }
