@@ -30,9 +30,9 @@ resource "aws_ebs_volume" "ebs" {
 
 resource "aws_volume_attachment" "ebs_att" {
   count = 2
+  device_name = "/dev/xdvf"
   volume_id   = aws_ebs_volume.ebs[count.index].id
   instance_id = aws_instance.web[count.index].id
-
 }
 
 
