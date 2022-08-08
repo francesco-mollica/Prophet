@@ -6,7 +6,6 @@ resource "aws_instance" "web" {
   subnet_id = aws_subnet.private_subnet.id
   
   root_block_device {
-    
     delete_on_termination = true
     volume_type = "gp2"
     volume_size = 30
@@ -21,17 +20,18 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_ebs_volume" "ebs" {
+  count = 2
   availability_zone = aws_subnet.private_subnet.availability_zone
-  size              = 10
+  size              = 11
   type = "gp2"
   // encrypted = false
   // throughput = ...
 }
 
 resource "aws_volume_attachment" "ebs_att" {
-  device_name = "/dev/xvdf"
-  volume_id   = aws_ebs_volume.ebs.id
-  instance_id = aws_instance.web[0].id
+  count = 2
+  volume_id   = aws_ebs_volume.ebs[count.index].id
+  instance_id = aws_instance.web[count.index].id
 
 }
 
