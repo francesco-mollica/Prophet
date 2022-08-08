@@ -5,7 +5,7 @@ resource "aws_instance" "web" {
   associate_public_ip_address = "false"
   subnet_id = aws_subnet.private_subnet.id
   
-  root_block_device = {
+  root_block_device {
     device_name = "/dev/sda1"
     delete_on_termination = true
     volume_type = "gp2"
