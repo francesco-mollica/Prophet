@@ -4,6 +4,6 @@ resource "aws_instance" "web" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "ec2-production"
+    Name = "ec2-prod"
   }
 }
